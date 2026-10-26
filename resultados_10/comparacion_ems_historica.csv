@@ -1,0 +1,3 @@
+﻿plan,costo_programado_um,ucf_esperada_um,criterio_esperado_um,penalizacion_realizada_um,criterio_realizado_um,gasto_red_simulado_um,red_factible_en_referencia,solar_programada_kwh,compra_simulada_kwh,venta_simulada_kwh
+sin_ucf,1099.9191475657894,227.31163582677172,1327.230783392561,100.043,1199.9621475657896,977.9271475657895,True,19.4156,30.417513690789477,8.988
+con_ucf,1120.8423775657895,199.8121023622047,1320.6544799279943,107.5755,1228.4178775657895,987.2463100657894,True,18.66235,30.91137631578947,9.537671625

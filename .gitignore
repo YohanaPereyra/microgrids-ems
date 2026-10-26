@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!/resultados_*/
+!/resultados_*/**
+!/datos_08/
+!/datos_08/**
+
+.venv/
+__pycache__/
+*.py[cod]

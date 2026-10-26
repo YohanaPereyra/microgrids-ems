@@ -1,0 +1,15 @@
+﻿caso,plan,dias_intentados,dias_con_plan_optimo,dias_sin_plan_optimo,dias_optimos_red_factible,dias_optimos_red_no_factible
+base,sin_ucf,109,109,0,109,0
+base,con_ucf,109,109,0,109,0
+faltante_0p5,sin_ucf,109,109,0,109,0
+faltante_0p5,con_ucf,109,109,0,109,0
+faltante_2p0,sin_ucf,109,109,0,109,0
+faltante_2p0,con_ucf,109,109,0,109,0
+excedente_0p5,sin_ucf,109,109,0,109,0
+excedente_0p5,con_ucf,109,109,0,109,0
+excedente_2p0,sin_ucf,109,109,0,109,0
+excedente_2p0,con_ucf,109,109,0,109,0
+capacidad_0p5,sin_ucf,109,109,0,109,0
+capacidad_0p5,con_ucf,109,109,0,109,0
+capacidad_1p5,sin_ucf,109,109,0,109,0
+capacidad_1p5,con_ucf,109,109,0,109,0

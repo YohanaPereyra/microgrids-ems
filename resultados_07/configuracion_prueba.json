@@ -1,0 +1,30 @@
+{
+  "dias": 200,
+  "semilla": 2026,
+  "numpy": "2.5.4",
+  "factor_diario": [
+    0.7,
+    1.3
+  ],
+  "factor_horario_limites": [
+    0.6,
+    1.4
+  ],
+  "desviacion_horaria": 0.08,
+  "correlacion_horaria": 0.7,
+  "costo_faltante_um_kwh": 100.0,
+  "costo_excedente_um_kwh": 10.0,
+  "parametros_microrred": {
+    "paso_h": 1.0,
+    "capacidad_kwh": 10.0,
+    "potencia_carga_kw": 3.0,
+    "potencia_descarga_kw": 3.0,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "soc_inicial": 0.5,
+    "soc_final": 0.5,
+    "eta_carga": 0.95,
+    "eta_descarga": 0.95,
+    "limite_red_kw": 10.0
+  }
+}

@@ -1,0 +1,18 @@
+MOC - Prueba con 200 dias sinteticos nuevos; semilla 2026.
+Ambos planes se leen del 06 y se ejecutan sin reoptimizar.
+La muestra es identica para ambos; no son mediciones.
+Dias factibles: sin UCF 200/200; con UCF 200/200.
+Comparacion sobre 200 dias factibles para ambos.
+
+         dias_factibles  dias_comparados  costo_programado_um  penalizacion_media_um  criterio_06_medio_um  criterio_06_p95_um  costo_red_medio_um
+plan                                                                                                                                              
+sin_ucf             200              200               846.76                 285.45               1132.21             1741.34              870.62
+con_ucf             200              200               919.55                 162.70               1082.25             1238.95              859.03
+
+Diferencia media del criterio (sin - con): 49.96 u.m.
+Diferencia media del gasto de red (sin - con): 11.59 u.m.
+Diferencia positiva: mejora con UCF; negativa: aumento con UCF.
+Dias con menor criterio con UCF: 84/200.
+El criterio del 06 y el gasto de red son evaluaciones distintas: no se suman.
+Una UCF no garantiza mejorar todos los dias ni bajo otra distribucion.
+Estos resultados corresponden a la distribucion sintetica de prueba, no a ahorro real demostrado.

@@ -1,0 +1,66 @@
+{
+  "fecha_ejemplo": "2023-09-13",
+  "tipo_modelo": "MILP EMS con bateria comun por plan",
+  "dias_calibracion": 254,
+  "primera_fecha_calibracion": "2023-01-02",
+  "ultima_fecha_calibracion": "2023-09-12",
+  "dias_prueba_reservados": 109,
+  "costo_faltante_um_kwh": 100.0,
+  "costo_excedente_um_kwh": 10.0,
+  "parametros_ems": {
+    "paso_h": 1.0,
+    "capacidad_kwh": 10.0,
+    "potencia_carga_kw": 3.0,
+    "potencia_descarga_kw": 3.0,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "soc_inicial": 0.5,
+    "soc_final": 0.5,
+    "eta_carga": 0.95,
+    "eta_descarga": 0.95,
+    "limite_red_kw": 10.0
+  },
+  "demanda_y_precios": "Perfiles ficticios del codigo 02",
+  "referencia_fv": "Produccion FV estimada, no mediciones de una planta",
+  "metodo_escenarios": "Funciones del 09; banco fijado solo con calibracion",
+  "factibilidad": "Todos los escenarios en ambos planes; bateria fija, red compensa, sin vertido",
+  "formulas_criterio": {
+    "esperado": "costo programado + UCF esperada",
+    "realizado": "costo programado + penalizacion con referencia",
+    "red": "compras simuladas menos ingresos por ventas; calculo separado"
+  },
+  "sha256_archivos": {
+    "02_microrred_24_horas.py": "d5a9615fce287d860c20fbf66816b7adf745f341c78a862b862e868d08145dd6",
+    "09_calibracion_ucf_historica.py": "d70c6395048eb3a025159c7384a7968225377dc8ea8206e0236cd6256cbb2093",
+    "10_milp_ucf_historica.py": "7516ff83a2ec9b3a413afc9dad20e666f7bcd57d6196ba8d96305812f5de9b94",
+    "resultados_08/pronosticos_calibracion.csv": "56486b68475c5b09763a0184f93208da766349dcfcf3675b4448eb05bc581193",
+    "resultados_08/pronosticos_prueba.csv": "ea6679b97e10884412a4029ffbda7c4e5cfe242df1404a02c74f2bde32b6b2d3",
+    "resultados_08/metadatos_datos_historicos.json": "9e5d64c758b3a5d781c7db1846ecfd696ea6113afbff2f39c43d6e7e11736cf6"
+  },
+  "sha256_respuesta_pvgis": "9d141b0a91bcb75c18f9bd4a2dff0c9dc37e5c91aa2e6c10dc3c392c8d234d68",
+  "verificacion_planes": {
+    "sin_ucf": {
+      "balance_kw": 4.440892098500626e-16,
+      "evolucion_kwh": 4.440892098500626e-16,
+      "max_abs_red_escenarios_kw": 5.0,
+      "terminacion_solver": "optimal"
+    },
+    "con_ucf": {
+      "balance_kw": 2.220446049250313e-16,
+      "evolucion_kwh": 7.771561172376096e-16,
+      "max_abs_red_escenarios_kw": 5.0,
+      "terminacion_solver": "optimal"
+    }
+  },
+  "versiones": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyomo": "6.10.1"
+  },
+  "limitaciones": [
+    "Un solo dia; no validacion de los 109 dias de prueba",
+    "Errores aditivos por hora sin condicionamiento estacional; recorte a cero y mascara solar del 09",
+    "Demanda, tarifas y penalizaciones ficticias; FV estimada, no medida",
+    "Bateria sin recarga adaptativa ni degradacion; no se modela limite AC del inversor"
+  ]
+}

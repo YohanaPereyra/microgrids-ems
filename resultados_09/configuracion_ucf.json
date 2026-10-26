@@ -1,0 +1,28 @@
+{
+  "metodo": "Distribucion empirica de vectores de error diarios por hora local",
+  "dias_calibracion": 254,
+  "primera_fecha_calibracion": "2023-01-02",
+  "ultima_fecha_calibracion": "2023-09-12",
+  "probabilidad_por_vector": 0.003937007874015748,
+  "fecha_ejemplo": "2023-09-13",
+  "hora_curva": 15,
+  "signo_error": "referencia menos pronostico",
+  "formula_escenarios": "max(0, pronostico + error); cero si H_sun <= 0",
+  "coeficientes_economicos_calibrados": false,
+  "costo_faltante_um_kwh": 100.0,
+  "costo_excedente_um_kwh": 10.0,
+  "paso_h": 1.0,
+  "cota_programacion": "0 <= s[t] <= pronostico[t]",
+  "tipo_modelo": "LP de UCF aislada",
+  "referencia_fv": "Produccion FV estimada, no mediciones de una planta",
+  "sha256_calibracion_csv": "56486b68475c5b09763a0184f93208da766349dcfcf3675b4448eb05bc581193",
+  "sha256_respuesta_pvgis": "9d141b0a91bcb75c18f9bd4a2dff0c9dc37e5c91aa2e6c10dc3c392c8d234d68",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "limitaciones": [
+    "Errores aditivos agrupados por hora sin condicionamiento estacional",
+    "La no negatividad y la mascara solar modifican los errores trasladados",
+    "No modela limite AC del inversor ni operacion de la microrred",
+    "Ejemplo de un dia de prueba; no es validacion del EMS ni ahorro de factura"
+  ]
+}

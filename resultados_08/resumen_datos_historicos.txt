@@ -1,0 +1,19 @@
+MOC - Preparacion de datos solares historicos y pronostico.
+Fuente: PVGIS 5.3 / ERA5; anio 2023; planta de referencia 5 kWp.
+La referencia es produccion FV estimada con meteorologia historica, no mediciones.
+Ubicacion elegida: latitud -29.413, longitud -66.856; horario UTC-3.
+Horas originales: 8760; dias completos con pronostico: 363.
+Calibracion: 254 dias; prueba: 109 dias.
+La prueba comienza el 2023-09-13.
+Se excluyen dias locales incompletos y el primer dia completo sin antecedente completo.
+Pronostico: repetir el perfil del dia anterior, usando solo datos ya disponibles.
+
+             dias  mae_solar_kw  rmse_solar_kw  sesgo_solar_kw
+periodo                                                       
+calibracion   254         0.375          0.648          -0.002
+prueba        109         0.345          0.594           0.003
+
+MAE: error absoluto medio. RMSE: raiz del error cuadratico medio.
+Las columnas solares incluyen horas con mas de 0.01 kW en referencia o pronostico.
+Sesgo positivo: la referencia supera al pronostico, en promedio.
+Estos errores preparan la futura calibracion de escenarios/UCF. Aqui no se ejecuta el EMS.

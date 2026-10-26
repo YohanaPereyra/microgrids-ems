@@ -1,0 +1,29 @@
+Estado: solucion optima
+EMS determinista PV + bateria + red. Datos y precios sinteticos.
+Costo con bateria: 846.76 unidades monetarias
+Costo sin bateria: 1156.00 unidades monetarias
+Diferencia de costo: 309.24 unidades monetarias
+SOC inicial: 50.0 %
+SOC final: 50.0 %
+Maximo error de balance: 0.00e+00 kW
+Maximo error de evolucion de bateria: 2.22e-16 kWh
+
+Parametros
+paso_h: 1.0
+capacidad_kwh: 10.0
+potencia_carga_kw: 3.0
+potencia_descarga_kw: 3.0
+soc_min: 0.1
+soc_max: 0.9
+soc_inicial: 0.5
+soc_final: 0.5
+eta_carga: 0.95
+eta_descarga: 0.95
+limite_red_kw: 10.0
+
+Versiones
+pyomo: 6.10.1
+highspy: 1.15.1
+numpy: 2.5.4
+pandas: 3.0.6
+matplotlib: 3.11.2

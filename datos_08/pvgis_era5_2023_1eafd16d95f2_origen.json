@@ -1,0 +1,57 @@
+{
+  "fuente": "JRC / PVGIS 5.3 / PVGIS-ERA5",
+  "url": "https://re.jrc.ec.europa.eu/api/v5_3/seriescalc?lat=-29.413&lon=-66.856&startyear=2023&endyear=2023&pvcalculation=1&peakpower=5.0&loss=14.0&angle=30.0&aspect=-179.0&raddatabase=PVGIS-ERA5&outputformat=json&pvtechchoice=crystSi&mountingplace=free&usehorizon=1",
+  "parametros_solicitados": {
+    "lat": -29.413,
+    "lon": -66.856,
+    "startyear": 2023,
+    "endyear": 2023,
+    "pvcalculation": 1,
+    "peakpower": 5.0,
+    "loss": 14.0,
+    "angle": 30.0,
+    "aspect": -179.0,
+    "raddatabase": "PVGIS-ERA5",
+    "outputformat": "json",
+    "pvtechchoice": "crystSi",
+    "mountingplace": "free",
+    "usehorizon": 1
+  },
+  "entradas_devuelta_api": {
+    "location": {
+      "latitude": -29.413,
+      "longitude": -66.856,
+      "elevation": 516.0
+    },
+    "meteo_data": {
+      "radiation_db": "PVGIS-ERA5",
+      "meteo_db": "ERA5",
+      "year_min": 2023,
+      "year_max": 2023,
+      "use_horizon": true,
+      "horizon_db": null,
+      "horizon_data": "DEM-calculated"
+    },
+    "mounting_system": {
+      "fixed": {
+        "slope": {
+          "value": 30,
+          "optimal": false
+        },
+        "azimuth": {
+          "value": -179,
+          "optimal": false
+        },
+        "type": "free-standing"
+      }
+    },
+    "pv_module": {
+      "technology": "c-Si",
+      "peak_power": 5.0,
+      "system_loss": 14.0
+    }
+  },
+  "descargado_utc": "2026-10-21T16:11:13.202389+00:00",
+  "sha256_respuesta": "9d141b0a91bcb75c18f9bd4a2dff0c9dc37e5c91aa2e6c10dc3c392c8d234d68",
+  "archivo_respuesta": "pvgis_era5_2023_1eafd16d95f2.json"
+}

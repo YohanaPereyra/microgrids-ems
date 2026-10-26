@@ -1,0 +1,50 @@
+MOC - Codigo 12: sensibilidad EXPLORATORIA; 109/109 dias.
+Periodo ejecutado: 2023-09-13 a 2023-12-30; siete casos, un factor por vez.
+Mismo banco y escenarios diarios; misma factibilidad sin/con UCF dentro de cada caso.
+Cada dia y capacidad reinicia el SOC inicial y exige el SOC final del 02.
+
+FACTIBILIDAD - todos los intentos, sin excluir fallos
+         caso    plan  dias_intentados  dias_con_plan_optimo  dias_sin_plan_optimo  dias_optimos_red_factible  dias_optimos_red_no_factible
+         base sin_ucf              109                   109                     0                        109                             0
+         base con_ucf              109                   109                     0                        109                             0
+ faltante_0p5 sin_ucf              109                   109                     0                        109                             0
+ faltante_0p5 con_ucf              109                   109                     0                        109                             0
+ faltante_2p0 sin_ucf              109                   109                     0                        109                             0
+ faltante_2p0 con_ucf              109                   109                     0                        109                             0
+excedente_0p5 sin_ucf              109                   109                     0                        109                             0
+excedente_0p5 con_ucf              109                   109                     0                        109                             0
+excedente_2p0 sin_ucf              109                   109                     0                        109                             0
+excedente_2p0 con_ucf              109                   109                     0                        109                             0
+capacidad_0p5 sin_ucf              109                   109                     0                        109                             0
+capacidad_0p5 con_ucf              109                   109                     0                        109                             0
+capacidad_1p5 sin_ucf              109                   109                     0                        109                             0
+capacidad_1p5 con_ucf              109                   109                     0                        109                             0
+
+Dias comunes a TODOS los casos y ambos planes: 109/109.
+DIFERENCIAS CON UCF MENOS SIN UCF, dentro de cada caso
+Delta negativo y reduccion porcentual positiva indican menor costo con UCF.
+         caso  capacidad_kwh  cf_um_kwh  ce_um_kwh  delta_criterio_media_um  reduccion_criterio_media_pct  delta_red_media_um  reduccion_red_media_pct
+         base          10.00     100.00      10.00                   -19.58                          1.56               -1.49                     0.14
+ faltante_0p5          10.00      50.00      10.00                    -2.58                          0.23               -1.58                     0.15
+ faltante_2p0          10.00     200.00      10.00                  -105.01                          7.15               12.08                    -1.16
+excedente_0p5          10.00     100.00       5.00                   -26.12                          2.10               -0.21                     0.02
+excedente_2p0          10.00     100.00      20.00                    -9.27                          0.73               -1.50                     0.14
+capacidad_0p5           5.00     100.00      10.00                   -30.55                          2.23               -2.90                     0.25
+capacidad_1p5          15.00     100.00      10.00                   -15.28                          1.30                1.80                    -0.19
+
+CAPACIDAD - gasto neto de red, mismos dias comunes
+         caso  capacidad_kwh  red_media_sin_ucf_um  red_media_con_ucf_um  red_p95_sin_ucf_um  red_p95_con_ucf_um
+capacidad_0p5           5.00               1151.37               1148.47             1480.15             1480.15
+         base          10.00               1042.83               1041.34             1388.33             1386.65
+capacidad_1p5          15.00                965.79                967.59             1316.43             1314.76
+
+Criterio realizado = costo programado + penalizacion del dia; no es factura.
+Gasto de red: compras simuladas menos ventas; indicador separado, no se suman.
+Al cambiar cf/ce cambia la regla del criterio: no ordenar casos por su criterio absoluto.
+Los porcentajes comparan sin/con UCF bajo la MISMA regla dentro de cada caso.
+El gasto de red mantiene los mismos precios entre casos; no incluye inversion ni degradacion.
+Mayor capacidad mantiene fija la potencia en kW y las fracciones de SOC; no es dimensionamiento optimo.
+P95: inversa de la distribucion empirica; no garantia futura ni prueba de significancia.
+Tambien se guardan resumenes sobre los dias pareados de cada caso y todos los fallos.
+Los dias del 11 ya fueron vistos: no seleccionar parametros y declarar validacion nueva con estos mismos dias.
+FV estimada; demanda, precios y coeficientes ficticios; un lugar y tramo de un anio.

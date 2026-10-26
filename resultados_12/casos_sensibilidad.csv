@@ -1,0 +1,8 @@
+﻿caso,factor,multiplicador,capacidad_kwh,cf_um_kwh,ce_um_kwh
+base,base,1.0,10.0,100.0,10.0
+faltante_0p5,faltante,0.5,10.0,50.0,10.0
+faltante_2p0,faltante,2.0,10.0,200.0,10.0
+excedente_0p5,excedente,0.5,10.0,100.0,5.0
+excedente_2p0,excedente,2.0,10.0,100.0,20.0
+capacidad_0p5,capacidad,0.5,5.0,100.0,10.0
+capacidad_1p5,capacidad,1.5,15.0,100.0,10.0

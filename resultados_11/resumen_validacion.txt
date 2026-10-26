@@ -1,0 +1,44 @@
+MOC - Codigo 11: evaluacion de 109 dias de prueba.
+Periodo: 2023-09-13 a 2023-12-30.
+Calibracion fija: 254 dias; sin ajuste con prueba.
+Demanda, tarifas y penalizaciones ficticias; FV de referencia estimada.
+Cada dia reinicia el SOC configurado y exige su SOC final; dias independientes.
+
+FACTIBILIDAD - se informan todos los dias intentados
+   plan  dias_intentados  dias_con_plan_optimo  dias_sin_plan_optimo  dias_optimos_red_factible  dias_optimos_red_no_factible
+sin_ucf              109                   109                     0                        109                             0
+con_ucf              109                   109                     0                        109                             0
+
+Dias comunes para comparar costos: 109/109.
+MEDIAS DE PLANIFICACION - unidades monetarias ficticias por dia
+metrica  costo_programado_um  ucf_esperada_um  criterio_esperado_um
+plan                                                               
+sin_ucf              1018.67           225.13               1243.80
+con_ucf              1043.51           181.33               1224.84
+
+MEDIAS DE EVALUACION - mismos dias comunes
+metrica  penalizacion_realizada_um  criterio_realizado_um  gasto_red_simulado_um
+plan                                                                            
+sin_ucf                     236.24                1254.91                1042.83
+con_ucf                     191.82                1235.32                1041.34
+
+COLA DE COSTOS - mismos dias comunes
+              metrica    plan     p95  maximo
+criterio_realizado_um sin_ucf 2098.57 2662.82
+criterio_realizado_um con_ucf 1950.22 2549.15
+gasto_red_simulado_um sin_ucf 1388.33 1581.37
+gasto_red_simulado_um con_ucf 1386.65 1580.23
+
+COMPARACION DIARIA - menor, mayor o igual con UCF
+              metrica  dias_comunes  dias_menor_con_ucf  dias_mayor_con_ucf  dias_iguales  delta_media_con_menos_sin
+criterio_realizado_um           109                  53                  56             0                     -19.58
+gasto_red_simulado_um           109                  58                  42             9                      -1.49
+
+Delta = con UCF menos sin UCF; negativo favorece al plan con UCF para ese indicador.
+Criterio realizado = costo programado + penalizacion del dia; no es factura.
+Gasto neto de red: compras simuladas menos ventas; calculo separado. No sumarlos.
+P95 es un percentil de esta muestra, no un maximo ni una garantia futura.
+Las medias excluyen dias sin ambos planes optimos o con red no factible; ver los recuentos.
+Las sumas corresponden a dias independientes, no a operacion continua de la bateria.
+Un menor costo medio y ganar mas dias son resultados distintos.
+La prueba corresponde a un unico lugar y tramo del anio; no demuestra superioridad general.

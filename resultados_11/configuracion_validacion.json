@@ -1,0 +1,59 @@
+{
+  "dias_calibracion": 254,
+  "inicio_calibracion": "2023-01-02",
+  "fin_calibracion": "2023-09-12",
+  "dias_prueba": 109,
+  "inicio_prueba": "2023-09-13",
+  "fin_prueba": "2023-12-30",
+  "banco_fijo_sin_recalibracion": true,
+  "escenarios_por_dia": 254,
+  "parametros_ems": {
+    "paso_h": 1.0,
+    "capacidad_kwh": 10.0,
+    "potencia_carga_kw": 3.0,
+    "potencia_descarga_kw": 3.0,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "soc_inicial": 0.5,
+    "soc_final": 0.5,
+    "eta_carga": 0.95,
+    "eta_descarga": 0.95,
+    "limite_red_kw": 10.0
+  },
+  "coeficientes_asumidos": {
+    "faltante_um_kwh": 100.0,
+    "excedente_um_kwh": 10.0
+  },
+  "metodo_p95": "inverted_cdf; inversa de distribucion empirica",
+  "comparacion_economica": "Mismos dias con ambos planes optimos y red factible en referencia",
+  "delta": "con UCF menos sin UCF; negativo indica menor valor con UCF",
+  "operacion_bateria": "Dias independientes con SOC inicial y final del 02; programa fijo dentro del dia",
+  "pronostico": "Al iniciar el dia, repetir el perfil del dia anterior",
+  "disponibilidad_datos": "Se supone cada dato disponible al terminar su hora",
+  "referencia_fv": "Produccion FV estimada, no mediciones de una planta",
+  "demanda_y_tarifas": "Ficticias del 02, repetidas diariamente",
+  "sha256_archivos": {
+    "02_microrred_24_horas.py": "d5a9615fce287d860c20fbf66816b7adf745f341c78a862b862e868d08145dd6",
+    "09_calibracion_ucf_historica.py": "d70c6395048eb3a025159c7384a7968225377dc8ea8206e0236cd6256cbb2093",
+    "10_milp_ucf_historica.py": "7516ff83a2ec9b3a413afc9dad20e666f7bcd57d6196ba8d96305812f5de9b94",
+    "11_validacion_historica_ems.py": "0a7db3b28031bbb059d14cf9de16b112dd3c326269f51542ef173531bdbee6cf",
+    "resultados_08/pronosticos_calibracion.csv": "56486b68475c5b09763a0184f93208da766349dcfcf3675b4448eb05bc581193",
+    "resultados_08/pronosticos_prueba.csv": "ea6679b97e10884412a4029ffbda7c4e5cfe242df1404a02c74f2bde32b6b2d3",
+    "resultados_08/metadatos_datos_historicos.json": "9e5d64c758b3a5d781c7db1846ecfd696ea6113afbff2f39c43d6e7e11736cf6"
+  },
+  "sha256_pvgis": "9d141b0a91bcb75c18f9bd4a2dff0c9dc37e5c91aa2e6c10dc3c392c8d234d68",
+  "versiones": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyomo": "6.10.1",
+    "highspy": "1.15.1"
+  },
+  "limitaciones": [
+    "Un lugar y un anio; sin condicionamiento estacional de errores",
+    "FV estimada; demanda, tarifas y penalizaciones ficticias",
+    "No representa operacion continua ni control adaptativo de bateria",
+    "No incluye degradacion, potencia reactiva, vertido ni limite AC de inversor",
+    "Pueden existir despachos distintos con igual objetivo",
+    "No se ajustan parametros mirando los resultados de prueba"
+  ]
+}

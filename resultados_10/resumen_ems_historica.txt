@@ -1,0 +1,22 @@
+MOC - EMS MILP con escenarios historicos. Dia 2023-09-13.
+Calibracion: 254 dias; 2023-01-02 a 2023-09-12.
+Ambos planes: solucion optima; misma factibilidad para todos los escenarios.
+Demanda y tarifas del 02: ficticias. Referencia FV PVGIS: estimada, no medida.
+
+PLANIFICACION - unidades monetarias ficticias
+   plan  costo_programado_um  ucf_esperada_um  criterio_esperado_um
+sin_ucf              1099.92           227.31               1327.23
+con_ucf              1120.84           199.81               1320.65
+
+EVALUACION DEL UNICO DIA - unidades monetarias ficticias
+   plan  penalizacion_realizada_um  criterio_realizado_um  gasto_red_simulado_um  red_factible_en_referencia
+sin_ucf                     100.04                1199.96                 977.93                        True
+con_ucf                     107.58                1228.42                 987.25                        True
+
+Criterio esperado = costo programado + UCF esperada.
+Criterio realizado = costo programado + penalizacion del dia. No es factura.
+Gasto de red simulado: calculo separado con toda la FV de referencia y bateria fija.
+No sumar el gasto de red nuevamente con los criterios anteriores.
+Si la referencia viola la red, se marca False y no se informa costo valido (NaN).
+La mejora del criterio esperado no garantiza mejorar el dia ni el gasto de red.
+Proxima etapa: evaluacion diaria durante los 109 dias de prueba.

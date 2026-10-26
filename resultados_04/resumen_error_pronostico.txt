@@ -1,0 +1,14 @@
+MOC - Error de pronostico solar. Caso sintetico.
+Entre 9 y 16 h, generacion real al 70 % de la prevista.
+Energia solar prevista: 35.30 kWh
+Energia solar real: 26.60 kWh
+Costo previsto: 846.76 unidades monetarias
+Costo real con el mismo plan de bateria: 1015.78 unidades monetarias
+Variacion frente al costo previsto: 169.02 unidades monetarias
+Referencia ideal con informacion perfecta: 945.20 unidades monetarias
+Brecha respecto de la referencia ideal: 70.58 unidades monetarias
+Maximo error de balance en ejecucion real: 0.00e+00 kW
+Carga, descarga y SOC de bateria se mantienen como fueron programados.
+La red compensa a los precios originales; no se incluyen tarifas de desbalance.
+Referencia ideal: el futuro se conoce antes de decidir; no es un controlador real.
+La variacion de costo de este ejemplo no es una UCF.

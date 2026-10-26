@@ -1,0 +1,4 @@
+﻿escenario,solar_kw,probabilidad
+Menor generacion,3.500000000,0.250000000
+Intermedio,5.000000000,0.500000000
+Mayor generacion,6.500000000,0.250000000

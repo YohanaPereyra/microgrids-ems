@@ -1,0 +1,15 @@
+MOC - Primera UCF con tres escenarios sinteticos.
+Modelo: programacion lineal (LP) con auxiliares para los desvios.
+Duracion del intervalo: 1.00 h
+Penalizacion por faltante: 50.00 u.m./kWh
+Penalizacion por excedente: 10.00 u.m./kWh
+Potencia solar media de los escenarios: 5.00 kW
+Programacion de referencia: 5.00 kW
+UCF con esa referencia: 22.50 u.m.
+Programacion elegida al minimizar UCF: 3.50 kW
+UCF minima: 15.00 u.m.
+Reduccion de penalizacion esperada: 7.50 u.m.
+La generacion disponible no cambia al cambiar la programacion.
+La UCF es un promedio probabilistico: no es el costo observado de un escenario.
+Este archivo todavia no integra la UCF al MILP de la microrred.
+Las penalizaciones de este intervalo no se comparan con la factura de 24 horas.

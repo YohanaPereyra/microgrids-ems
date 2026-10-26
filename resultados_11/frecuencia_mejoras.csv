@@ -1,0 +1,7 @@
+﻿metrica,dias_comunes,dias_menor_con_ucf,dias_mayor_con_ucf,dias_iguales,delta_media_con_menos_sin
+costo_programado_um,109,0,109,0,24.83820262284306
+ucf_esperada_um,109,109,0,0,-43.796012871178014
+criterio_esperado_um,109,109,0,0,-18.957810248334965
+penalizacion_realizada_um,109,68,41,0,-44.421898817473114
+criterio_realizado_um,109,53,56,0,-19.583696194630072
+gasto_red_simulado_um,109,58,42,9,-1.488909948219899

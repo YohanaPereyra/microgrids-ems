@@ -1,0 +1,17 @@
+MOC - Primera UCF empirica con errores historicos del codigo 08.
+Calibracion: 254 dias, desde 2023-01-02 hasta 2023-09-12.
+Escenarios del ejemplo: 254 vectores de 24 horas con igual peso.
+Dia ilustrativo: 2023-09-13; primer pronostico del periodo de prueba.
+Coeficientes asumidos: faltante 100; excedente 10 u.m./kWh.
+Estado: solucion optima de un LP continuo de UCF AISLADA de 24 horas.
+
+          alternativa  solar_programada_kwh  ucf_esperada_ejemplo_um  penalizacion_realizada_ejemplo_um
+ programar_pronostico                 19.42                   227.31                             100.04
+minimizar_ucf_aislada                 11.39                   127.98                             180.27
+
+UCF esperada: media sobre los escenarios construidos con calibracion.
+Penalizacion realizada: usa la referencia PVGIS del UNICO dia ilustrativo.
+La mejora esperada no garantiza mejorar ese dia concreto.
+La referencia FV es estimada, no una medicion. Los coeficientes economicos no se estiman aqui.
+No se ejecuta el EMS, no hay plan de bateria y no se calcula gasto de red.
+La siguiente etapa integra estos escenarios y la UCF al MILP del EMS.

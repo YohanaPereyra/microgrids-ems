@@ -1,0 +1,21 @@
+MOC - Sensibilidad del EMS determinista
+Datos y precios sinteticos; cada escenario se conoce antes de optimizar.
+Cada costo con bateria se compara con su propio caso sin bateria.
+A: cambia solo la capacidad; potencia fija de 3 kW y solar al 100 %.
+B: cambia solo la produccion solar; bateria fija de 10 kWh y 3 kW.
+SOC inicial y final: 50 %; limites: 10-90 %; eficiencias: 95 % cada una.
+Costos operativos: no incluyen inversion ni degradacion.
+Este estudio aun no incorpora UCF ni errores de pronostico.
+
+Estudio A
+ capacidad_kwh  solar_pct  costo_con_bateria_um  costo_sin_bateria_um  reduccion_costo_um
+           5.0      100.0            978.263158                1156.0          177.736842
+          10.0      100.0            846.760526                1156.0          309.239474
+          15.0      100.0            736.865789                1156.0          419.134211
+          20.0      100.0            636.165000                1156.0          519.835000
+
+Estudio B
+ capacidad_kwh  solar_pct  costo_con_bateria_um  costo_sin_bateria_um  reduccion_costo_um
+          10.0       50.0           1162.025526                1409.0          246.974474
+          10.0       75.0            959.760526                1276.5          316.739474
+          10.0      100.0            846.760526                1156.0          309.239474

@@ -1,0 +1,126 @@
+{
+  "tipo_estudio": "Sensibilidad exploratoria de un factor por vez; sin seleccion automatica",
+  "dias_del_11_ya_observados": true,
+  "dias_disponibles": 109,
+  "dias_ejecutar": 109,
+  "ensayo_parcial": false,
+  "inicio": "2023-09-13",
+  "fin": "2023-12-30",
+  "dias_calibracion": 254,
+  "inicio_calibracion": "2023-01-02",
+  "fin_calibracion": "2023-09-12",
+  "escenarios_por_dia": 254,
+  "banco_fijo_solo_calibracion": true,
+  "parametros_base": {
+    "paso_h": 1.0,
+    "capacidad_kwh": 10.0,
+    "potencia_carga_kw": 3.0,
+    "potencia_descarga_kw": 3.0,
+    "soc_min": 0.1,
+    "soc_max": 0.9,
+    "soc_inicial": 0.5,
+    "soc_final": 0.5,
+    "eta_carga": 0.95,
+    "eta_descarga": 0.95,
+    "limite_red_kw": 10.0
+  },
+  "casos": [
+    {
+      "caso": "base",
+      "factor": "base",
+      "multiplicador": 1.0,
+      "capacidad_kwh": 10.0,
+      "cf_um_kwh": 100.0,
+      "ce_um_kwh": 10.0
+    },
+    {
+      "caso": "faltante_0p5",
+      "factor": "faltante",
+      "multiplicador": 0.5,
+      "capacidad_kwh": 10.0,
+      "cf_um_kwh": 50.0,
+      "ce_um_kwh": 10.0
+    },
+    {
+      "caso": "faltante_2p0",
+      "factor": "faltante",
+      "multiplicador": 2.0,
+      "capacidad_kwh": 10.0,
+      "cf_um_kwh": 200.0,
+      "ce_um_kwh": 10.0
+    },
+    {
+      "caso": "excedente_0p5",
+      "factor": "excedente",
+      "multiplicador": 0.5,
+      "capacidad_kwh": 10.0,
+      "cf_um_kwh": 100.0,
+      "ce_um_kwh": 5.0
+    },
+    {
+      "caso": "excedente_2p0",
+      "factor": "excedente",
+      "multiplicador": 2.0,
+      "capacidad_kwh": 10.0,
+      "cf_um_kwh": 100.0,
+      "ce_um_kwh": 20.0
+    },
+    {
+      "caso": "capacidad_0p5",
+      "factor": "capacidad",
+      "multiplicador": 0.5,
+      "capacidad_kwh": 5.0,
+      "cf_um_kwh": 100.0,
+      "ce_um_kwh": 10.0
+    },
+    {
+      "caso": "capacidad_1p5",
+      "factor": "capacidad",
+      "multiplicador": 1.5,
+      "capacidad_kwh": 15.0,
+      "cf_um_kwh": 100.0,
+      "ce_um_kwh": 10.0
+    }
+  ],
+  "potencia_bateria_fija_kw": [
+    3.0,
+    3.0
+  ],
+  "soc": "Mismas fracciones de SOC; kWh inicial/final proporcionales a capacidad. Dias independientes.",
+  "cache_sin_ucf": "Solo por fecha y capacidad; se recalculan UCF/penalizacion de cada caso",
+  "milp_por_dia": 10,
+  "milp_totales_previstos": 1090,
+  "resumen_global": "Interseccion de dias optimos y red factible para ambos planes de TODOS los casos",
+  "resumen_pareado": "Tambien se informan dias comunes a los dos planes de cada caso",
+  "delta": "con UCF menos sin UCF",
+  "metodo_p95": "inverted_cdf",
+  "pronostico": "Al iniciar el dia, repetir el perfil del dia anterior",
+  "disponibilidad_datos": "Se supone cada dato disponible al terminar su hora",
+  "referencia_fv": "Produccion FV estimada, no mediciones de una planta",
+  "sha256_pvgis": "9d141b0a91bcb75c18f9bd4a2dff0c9dc37e5c91aa2e6c10dc3c392c8d234d68",
+  "sha256_archivos": {
+    "02_microrred_24_horas.py": "d5a9615fce287d860c20fbf66816b7adf745f341c78a862b862e868d08145dd6",
+    "09_calibracion_ucf_historica.py": "d70c6395048eb3a025159c7384a7968225377dc8ea8206e0236cd6256cbb2093",
+    "10_milp_ucf_historica.py": "7516ff83a2ec9b3a413afc9dad20e666f7bcd57d6196ba8d96305812f5de9b94",
+    "11_validacion_historica_ems.py": "0a7db3b28031bbb059d14cf9de16b112dd3c326269f51542ef173531bdbee6cf",
+    "12_sensibilidad_ems_ucf.py": "99a77086c6dad95c635b31a8a312d83c34defc2c5c77d9eb9713554bd833e086",
+    "resultados_08/pronosticos_calibracion.csv": "56486b68475c5b09763a0184f93208da766349dcfcf3675b4448eb05bc581193",
+    "resultados_08/pronosticos_prueba.csv": "ea6679b97e10884412a4029ffbda7c4e5cfe242df1404a02c74f2bde32b6b2d3",
+    "resultados_08/metadatos_datos_historicos.json": "9e5d64c758b3a5d781c7db1846ecfd696ea6113afbff2f39c43d6e7e11736cf6"
+  },
+  "versiones": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyomo": "6.10.1",
+    "highspy": "1.15.1",
+    "matplotlib": "3.11.2"
+  },
+  "limitaciones": [
+    "No cambia demanda, precios, potencia, eficiencia ni banco historico",
+    "No estudia interacciones entre factores ni identifica un optimo",
+    "Criterios absolutos no comparables bajo distintas penalizaciones",
+    "Sin inversion, degradacion, potencia reactiva, vertido ni limite AC del inversor",
+    "Posibles soluciones multiples con igual objetivo; no es prueba de significancia",
+    "Una ubicacion, un anio, FV estimada y precios/demanda ficticios"
+  ]
+}
