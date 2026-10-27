@@ -1,96 +1,132 @@
-# Sistema de Gestión de Energía para Microrredes (EMS)
+# Gestión energética de microrredes con MILP y UCF
 
-**Investigación en desarrollo | Python · Optimización MILP · Incertidumbre (UCF)**
+**Proyecto de investigación en desarrollo | Python · Pyomo · HiGHS**
 
-## Descripción
+Este repositorio reúne los modelos, experimentos y resultados del proyecto MOC sobre gestión energética de una microrred con generación solar fotovoltaica, batería y conexión a la red eléctrica.
 
-Este repositorio reúne modelos y experimentos desarrollados en Python para estudiar la **gestión óptima de energía en microrredes** (*Energy Management Systems*, EMS).
+El desarrollo avanza desde ejercicios de despacho determinista hasta un sistema de gestión de energía (EMS) basado en programación lineal entera mixta (MILP), con funciones de costo de incertidumbre (UCF, *Uncertainty Cost Functions*) construidas a partir de errores solares históricos. Incluye una evaluación de 109 días y un análisis exploratorio de sensibilidad.
 
-El trabajo explora la programación del intercambio de energía con la red eléctrica, el uso de almacenamiento y el efecto de la incertidumbre en las decisiones de operación. Se estudia la **programación lineal entera mixta (MILP)** y la incorporación de **funciones de costo de incertidumbre (UCF, *Uncertainty Cost Functions*)** para evaluar decisiones bajo distintos escenarios.
+Los resultados corresponden a una microrred simplificada y a los supuestos del caso de estudio. La referencia fotovoltaica de PVGIS es estimada mediante modelos; la demanda, las tarifas y las penalizaciones económicas son ficticias.
 
-El código tiene carácter **experimental y académico**: los modelos, supuestos y pruebas se encuentran en evolución.
+## Contenido
 
-## Objetivos
-
-- Desarrollar y ampliar modelos de optimización para la operación de una microrred.
-- Analizar el despacho de energía y el comportamiento de sistemas de almacenamiento.
-- Estudiar el efecto de errores de pronóstico y distintos escenarios de operación.
-- Incorporar penalizaciones esperadas por incertidumbre mediante UCF.
-- Comparar alternativas de planificación mediante métricas de costo y resultados de simulación.
-- Evaluar la sensibilidad y la capacidad de generalización de los modelos.
-
-## Estructura del repositorio
-
-| Archivo | Contenido |
+| Archivo | Etapa del desarrollo |
 | --- | --- |
-| `01_microrred_3_horas.py` | Primer modelo de microrred con un horizonte de simulación de 3 horas. |
-| `02_microrred_24_horas.py` | Ampliación del modelo a un horizonte de 24 horas. |
-| `02_microrred_24_horas_extra.py` | Variante adicional del modelo de 24 horas; sus diferencias específicas están pendientes de documentar. |
-| `03_analisis_sensibilidad.py` | Experimentos para analizar cómo cambian los resultados al modificar parámetros. |
-| `04_error_pronostico.py` | Experimentos relacionados con los errores de pronóstico. |
-| `05_primera_ucf.py` | Primeras pruebas de incorporación de funciones de costo de incertidumbre. |
-| `06_milp_con_ucf.py` | Desarrollo del modelo de optimización MILP con UCF. |
-| `07_validacion_nuevos_dias.py` | Pruebas de validación con nuevos días o conjuntos de datos. |
+| [01_microrred_3_horas.py](01_microrred_3_horas.py) | Primer MILP de despacho de una microrred durante tres horas. |
+| [02_microrred_24_horas.py](02_microrred_24_horas.py) | Planificación de 24 horas con eficiencias, límites de batería y compra y venta de energía. |
+| [02_microrred_24_horas_extra.py](02_microrred_24_horas_extra.py) | Ampliación gráfica del código 02 con el abastecimiento de la demanda por fuente. |
+| [03_analisis_sensibilidad.py](03_analisis_sensibilidad.py) | Sensibilidad del despacho determinista a la capacidad de batería y la generación solar. |
+| [04_error_pronostico.py](04_error_pronostico.py) | Efecto de un error solar simulado al ejecutar un plan de batería fijo. |
+| [05_primera_ucf.py](05_primera_ucf.py) | UCF aislada de un intervalo, formulada como un programa lineal continuo. |
+| [06_milp_con_ucf.py](06_milp_con_ucf.py) | Integración de UCF al EMS MILP con escenarios solares sintéticos. |
+| [07_validacion_nuevos_dias.py](07_validacion_nuevos_dias.py) | Evaluación de los planes del código 06 sobre 200 nuevos días solares sintéticos. |
+| [08_datos_historicos_pvgis.py](08_datos_historicos_pvgis.py) | Preparación de referencias solares de PVGIS y pronósticos de persistencia. |
+| [09_calibracion_ucf_historica.py](09_calibracion_ucf_historica.py) | Construcción de escenarios con errores históricos y optimización de una UCF aislada de 24 horas, sin EMS. |
+| [10_milp_ucf_historica.py](10_milp_ucf_historica.py) | Integración de los escenarios históricos y la UCF al EMS MILP para un día ilustrativo. |
+| [11_validacion_historica_ems.py](11_validacion_historica_ems.py) | Evaluación diaria de los planes sin y con UCF durante los 109 días de prueba. |
+| [12_sensibilidad_ems_ucf.py](12_sensibilidad_ems_ucf.py) | Sensibilidad exploratoria a las penalizaciones de faltante y excedente y a la capacidad de batería. |
 
-Las carpetas locales `resultados_02`, `resultados_03`, etc. pueden contener salidas de simulaciones, pero **no forman parte de la versión publicada inicialmente en GitHub**.
+## Memoria técnica, datos y resultados
 
-## Enfoque metodológico
+La [memoria técnica de los códigos 01 al 12](Explicacion_Codigos_01a12_Proyecto_Microgrids.pdf) explica los conceptos, modelos matemáticos, supuestos, resultados, gráficos y verificaciones de cada etapa. Incluye también la ampliación gráfica del código 02.
 
-Se parte de un modelo de programación de la operación de la microrred y se incorporan progresivamente herramientas para estudiar su comportamiento ante condiciones variables.
+- `datos_08/`: respuesta de PVGIS guardada que permite conservar la entrada utilizada.
+- `resultados_02/` a `resultados_12/`: salidas de los experimentos, según cada código, con tablas CSV, gráficos, resúmenes y registros de configuración o verificación.
+- El código 01 muestra su resultado en consola y no genera una carpeta de resultados.
 
-Una parte central del análisis consiste en comparar estrategias que optimizan el costo programado con otras que también consideran una penalización esperada por incertidumbre. Como criterio de evaluación puede utilizarse:
+## Datos y diseño de la evaluación histórica
 
-**Criterio total = costo programado + penalización esperada por incertidumbre.**
+- **Referencia solar:** PVGIS 5.3 / ERA5, año 2023, ubicación en La Rioja, Argentina, planta de referencia de 5 kWp y horario local UTC-3.
+- **Pronóstico:** persistencia diaria; se repite el perfil del día anterior usando los datos anteriores al día que se programa.
+- **Calibración:** 254 días, del 02/01/2023 al 12/09/2023.
+- **Prueba:** 109 días, del 13/09/2023 al 30/12/2023.
+- **Escenarios:** 254 vectores diarios de errores de 24 horas, con igual peso. El banco de calibración permanece fijo durante la prueba.
 
-Esta suma es un **criterio de planificación del modelo**, no una factura eléctrica medida. Los valores económicos de los ejemplos son unidades monetarias de simulación, salvo que se indique expresamente lo contrario.
+Los códigos 10 a 12 comparan planes sin y con UCF en el objetivo, bajo las mismas restricciones de factibilidad para todos los escenarios históricos. Esta comparación permite estudiar el efecto de incorporar la penalización esperada al objetivo. El plan sin UCF de estas etapas también tiene restricciones por escenarios; no es un comparador exclusivamente nominal.
+
+Cada plan mantiene una única programación de batería y la red compensa las distintas realizaciones solares. Los días se evalúan de forma independiente: la batería reinicia el SOC configurado y debe alcanzar el SOC final exigido en cada fecha. No se simula una operación continua de la batería entre días ni una reoptimización intradiaria.
+
+## Indicadores económicos
+
+| Indicador | Definición |
+| --- | --- |
+| Costo programado | Compras menos ventas de energía del plan, valoradas con los precios del modelo. |
+| UCF esperada | Penalización media por desviaciones de la programación solar sobre los escenarios de calibración. |
+| Criterio esperado | Costo programado + UCF esperada. |
+| Criterio realizado | Costo programado + penalización calculada con la referencia solar del día evaluado. |
+| Gasto neto de red simulado | Compras menos ventas de red al utilizar toda la referencia solar del día y mantener fijo el plan de batería. |
+
+El criterio realizado y el gasto neto de red son evaluaciones distintas y **no deben sumarse entre sí**. Los criterios con penalización no representan una factura eléctrica medida. Un menor criterio esperado tampoco garantiza mejorar cada día ni reducir el gasto de red.
+
+### Resultados del caso base del código 11
+
+En los 109 días se obtuvieron planes óptimos y factibles al evaluar la red con la referencia solar para ambas alternativas.
+
+| Indicador diario, en unidades monetarias ficticias | Sin UCF en el objetivo | Con UCF en el objetivo |
+| --- | ---: | ---: |
+| Media del criterio realizado | 1254,91 | 1235,32 |
+| P95 del criterio realizado | 2098,57 | 1950,22 |
+| Media del gasto neto de red simulado | 1042,83 | 1041,34 |
+
+La reducción media del criterio realizado es aproximadamente del **1,56 %**, mientras que la del gasto de red es del **0,14 %**. El criterio realizado mejora en 53 días y empeora en 56: mejorar el promedio y mejorar en más días son resultados diferentes. El P95 es un percentil de esta muestra, no una garantía para días futuros.
+
+El código 12 estudia siete casos, cambiando un factor por vez. En todos disminuye el criterio realizado medio con UCF; el gasto de red disminuye en cinco y aumenta en dos. Los coeficientes económicos modifican la regla del criterio, por lo que las comparaciones sin/con UCF se realizan dentro de cada caso. El barrido es exploratorio sobre días ya observados; no selecciona parámetros óptimos ni constituye una validación nueva de parámetros elegidos con esos días.
 
 ## Requisitos y ejecución
 
-- Python instalado.
-- Un entorno virtual de Python (recomendado).
-- Las bibliotecas y el solucionador de optimización que utilice cada script. En los modelos MILP se trabaja con **HiGHS**.
+El entorno utilizado durante el desarrollo es Windows con Python 3.14.4, NumPy, SciPy, pandas, Matplotlib, Pyomo y HiGHS mediante `appsi_highs`. Las versiones de las dependencias todavía no están fijadas en un archivo `requirements.txt` validado.
 
-Para clonar el repositorio:
+Para obtener el repositorio:
 
-```bash
+```powershell
 git clone https://github.com/YohanaPereyra/microgrids-ems.git
 cd microgrids-ems
 ```
 
-Para crear y activar un entorno virtual en **Windows PowerShell**:
+Para crear un entorno e instalar las bibliotecas en Windows PowerShell:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install numpy scipy pandas matplotlib pyomo highspy
 ```
 
-A modo de punto de partida, pueden instalarse las siguientes dependencias habituales del proyecto:
+Por ejemplo, para ejecutar el primer ejercicio:
 
 ```powershell
-python -m pip install pyomo highspy numpy pandas matplotlib scipy
+.\.venv\Scripts\python.exe .\01_microrred_3_horas.py
 ```
 
-> **Nota:** esta lista es orientativa y debe verificarse contra las importaciones reales de todos los scripts antes de considerarla definitiva. Todavía no se incluye un archivo `requirements.txt` validado.
+En VS Code también se puede seleccionar `.venv\Scripts\python.exe` como intérprete y ejecutar cada archivo desde el editor.
 
-Para ejecutar, por ejemplo, el primer modelo:
+Para recorrer la etapa histórica, ejecutar los códigos 08 a 12 en orden:
 
 ```powershell
-python 01_microrred_3_horas.py
+.\.venv\Scripts\python.exe .\08_datos_historicos_pvgis.py
+.\.venv\Scripts\python.exe .\09_calibracion_ucf_historica.py
+.\.venv\Scripts\python.exe .\10_milp_ucf_historica.py
+.\.venv\Scripts\python.exe .\11_validacion_historica_ems.py
+.\.venv\Scripts\python.exe .\12_sensibilidad_ems_ucf.py
 ```
 
-La ejecución de otros scripts puede depender de sus parámetros, datos de entrada y rutas locales. Consultar cada archivo antes de utilizarlo.
+Los archivos Python deben conservarse juntos, porque varios códigos importan funciones de etapas anteriores. Los códigos 09 a 12 requieren `datos_08/` y `resultados_08/`; no necesitan consultar internet. El código 08 reutiliza la respuesta PVGIS guardada o consulta la fuente si esa respuesta no está disponible. Las salidas de los códigos 09 y 10 no son necesarias para ejecutar el 11, y el 12 no requiere las salidas del 11.
+
+Con la configuración completa, el código 11 resuelve 218 MILP y el 12 resuelve 1090 MILP, por lo que pueden demorar. Cerrar las ventanas de gráficos cuando el programa lo indique para finalizar la ejecución y continuar con el siguiente archivo.
 
 ## Estado y próximos pasos
 
-El repositorio contiene una secuencia de experimentos que avanza desde modelos básicos de microrredes hasta análisis con incertidumbre y validación. Entre los próximos pasos se encuentran:
+Está implementado el EMS con UCF histórica, con evaluación de 109 días y sensibilidad a penalizaciones y capacidad de batería. La demanda y los precios siguen siendo ficticios; la referencia solar es estimada y los ensayos corresponden a una ubicación y parte de un año. No se incluyen costos de inversión ni degradación de batería.
 
-- Documentar los supuestos, variables y restricciones de cada modelo.
-- Identificar las diferencias entre ambas versiones del modelo de 24 horas.
-- Estandarizar los datos de entrada y los resultados.
-- Validar y fijar las dependencias en `requirements.txt`.
-- Ampliar las comparaciones entre enfoques de optimización.
+Los próximos pasos son:
 
-## Autora
+- Consolidar la reproducibilidad y comprobar la correspondencia entre configuraciones, tablas y resúmenes de los experimentos.
+- Completar la sensibilidad prevista sobre precios y supuestos del error de pronóstico.
+- Fijar las versiones de las dependencias utilizadas.
+- Redactar el informe integrado con discusión de resultados, interpretación económica y limitaciones.
+- Revisar con el tutor el alcance final y la contribución de investigación.
 
-**Yohana Pereyra**  
-Proyecto de investigación en gestión energética de microrredes.
+## Autora y tutor
+
+**Autora:** Yohana Del Valle Pereyra Flores.  
+**Tutor:** Carlos Sánchez Reinoso.  
+**Institución:** Universidad Tecnológica Nacional, Facultad Regional La Rioja.  
+**Carrera:** Ingeniería Electrónica.
